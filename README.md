@@ -24,3 +24,12 @@ Local stores sell overstock and clearance inventory at discounted flash-sale pri
 - Sell Starter first: $100/mo +10%; Pro $195/$175/$150 +6%, cheaper only above $1,250/$1,875/$2,375/mo sales
 - Real photos only, no AI imagery
 - No secrets in this repo — no EIN, no gov ID, no API keys, no Stripe keys
+
+## Logo tags — floating / animated (transparent PNG, no white background)
+- assets/logo-721deals.webp — header/footer banner, 721 Deals.com capital D
+- assets/logo-tag-teal.png — teal tag #00A896
+- assets/logo-tag-coral.png — coral tag #FF5A3C
+- assets/logo-tag-sun.png — sun yellow tag #FFC300
+- assets/logo-tag-ink.png — ink tag #0F2A2E, teal pelican
+Welcome page: the tags float in and out of the open space, fading in and out, cycling teal → coral → sun → ink. Respect prefers-reduced-motion.
+Languages: 6 — English, Español, Français, Kreyòl Ayisyen, Papiamento, Nederlands, each with its flag.
