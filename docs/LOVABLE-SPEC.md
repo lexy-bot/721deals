@@ -97,9 +97,11 @@ Online marketplace in Sint Maarten connecting local stores to buyers to sell ove
 - Box assembly needs backend-generated pick list, not memory. Do NOT ship boxes cross-border in v1.
 
 ## 11. Done-for-you vs self-serve + founder picker
-- Self-serve $0, store runs dashboard, first 3 listings admin-approved.
-- **DFY flat per visit: $75 for 10 items, $150 for 20, $375 for 50 — all $7.50/item.** Includes 1 visit, photos front+back (2/item), name, category, size, colour, was-price proof, flash price, per-size stock, size chart, upload, live check with owner, 1 correction round. Excludes restocking, re-photographing sold items, jewellery/gadget serial verification (separate $25/item).
-- **Waiver: DFY waived for Pro 12-month sign-up only, half-price ($75) for Pro 6-month; NEVER waive for Starter.** Cap: 1 store/day, 20 items max per visit; over 20 = second visit at same rate.
+- **Path A — Run it yourself ($0):** store runs its own dashboard and its own listings. The store is NOT in the done-for-you admin workflow — we do not do it for them. Path A stores are still under admin control: first 3 listings admin-approved, admin can pause or remove them for violations.
+- **Path B — Done for you:** we go to the store and do it for them.
+- **DFY flat per visit — founding rate for the FIRST 10 businesses: $5/item — $50 for 10 items, $100 for 20, $250 for 50. Standard rate after the first 10: $7.50/item — $75 for 10, $150 for 20, $375 for 50.** Includes 1 visit, photos front+back (2/item), name, category, size, colour, was-price proof, flash price, per-size stock, size chart, upload, live check with owner, 1 correction round. Excludes restocking, re-photographing sold items, jewellery/gadget serial verification (excluded — no add-on price).
+- **DFY discounts: Pro 12-month waived (free) within caps; Pro 6-month half price and it STACKS on the founding rate — $2.50/item founding ($25/10, $50/20, $125/50), $3.75/item standard ($37.50/10, $75/20, $187.50/50). Pro 3-month pays FULL done-for-you price. Starter ALWAYS pays full price, never discounted.** Cap: 1 store/day, 20 items max per visit; over 20 = second visit at same rate.
+- **Admin approval gate: first 3 listings of EVERY store (Path A and Path B) are admin-approved before they go live — admin checks price (minimum 20% off proven was-price, floor and ceiling) and photos (real photos, front and back, meets standard).**
 - Picker fields in order: Photo (front+back, min 2, 1200×1200 min, <500KB, real photos only) → Name (human types, no AI naming) → Category dropdown (Mens/Womens/Kids/Shoes/Toys/Gadgets/Jewellery; jewellery/gadgets gated) → Size dropdown per category → Colour multi-select max 3 → Pieces per size (number per size, NOT one total) → Colours left (count per colour, must sum to total pieces) → Deadstock count left (auto = sum of per-size stock, editable only with a reason) → Was price (proof photo of tag/price list required) → Flash price → Save/Publish (first 3 admin-approved).
 - Variant rule: stock per **size × colour**, variant SKU e.g. TEE-BLK-M, max 3 options/product; box/bundle stock = bottleneck component; sold-out size greyed out, not hidden, not buyable; reserve stock on checkout (30-min hold), decrement on payment not add-to-cart; first paid wins on last unit, second gets auto-refund + alternative size offer; immutable stock ledger, corrections as new entries.
 
@@ -147,6 +149,9 @@ Online marketplace in Sint Maarten connecting local stores to buyers to sell ove
 
 ## 18. Open decisions / gaps — do NOT invent answers in Lovable
 - Cut rate: Starter 10% / Pro 6% recommended, NOT locked.
+- **DECIDED 2026-11-20: Stripe support phone +1 721 587 1698 (business line).**
+- **DECIDED 2026-11-20: Founding 10 — first 10 businesses pay $5/item DFY ($50/10, $100/20, $250/50); Pro 6-month half price stacks ($2.50/item founding); Pro 12-month DFY waived; Pro 3-month and Starter pay full DFY price. All Tech Electronics is founding store #1.**
+- **DECIDED 2026-11-20: extra revenue is store-sponsored placements + house promos, NOT third-party display ads. Store directory shows "items sold since joining" per store; slim store banner carousel under the flash band, founding stores first.**
 - Pro ladder: $195 / $175 / $150, Starter $100 — NOT formally approved as final.
 - $175 Pro push feature as redefined (§3) — approve?
 - Tagline: demo shows "721 DEALS TAKES THE CAKE" — not explicitly locked as 721 Deals tagline.
@@ -157,13 +162,13 @@ Online marketplace in Sint Maarten connecting local stores to buyers to sell ove
 - Unverified: social handles for 721 Deals, FAC/local bank merchant quote, WhatsApp SXM rate in WhatsApp Manager, WATI live USD price, Wise payout fee/time to SXM banks, SXM lottery/prize law, .sx registry availability.
 
 ## 19. What to build first in Lovable (in order)
-1. Store dashboard + listing picker (§11) — founder can onboard a store in one visit
-2. Buyer browse + flash timer + WhatsApp reserve
-3. Stripe Checkout + held-funds state machine + weekly payout
-4. QR + last-4 pickup, server-signed, single-use (§8)
-5. PWA push opt-in + 2/day flash alerts
-6. Delivery zones + rider PIN flow (§9)
-7. Admin approval + dispute queue + reconciliation
+**Built already:** store dashboard + listing picker (§11), buyer browse + flash timer + WhatsApp reserve (step 1, 2026-11-19, plus fixes: Caribbean Punch, banner logo, 6-language gate, footer emails, slim header with single timer — user confirmed 2026-11-20).
+**Next, in this order:**
+1. **Admin dashboard (backend, owner-only)** — approvals queue (first 3 listings per store: price + photo check), store directory manager (update/remove photos, emails, listings), done-for-you workflow queue, holds + payouts view, disputes queue, reconciliation view. Admin can pause a store/flash.
+2. Stripe Checkout + held-funds state machine + weekly payout
+3. QR + last-4 pickup, server-signed, single-use (§8)
+4. PWA push opt-in + 2/day flash alerts + delivery zones + rider PIN flow (§9)
+5. Store directory extras: "items sold since joining" count next to each store name; slim store banner carousel under the flash band (founding stores first, swipeable on phones); sponsored placement slots for stores + house promos in open spaces — NO third-party display ads.
 
 ## 20. Audit rule for every Lovable build
 - Run the math five times, show it before it reaches the CEO. Find gaps/errors, run audit test, deliver only at 100/100.
