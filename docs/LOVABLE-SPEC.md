@@ -6,7 +6,7 @@
 **Real photos only — CEO hard line, no AI imagery. Reuse real retail photos from demo.**
 
 ## 1. What it is
-Online marketplace in Sint Maarten connecting local stores to buyers to sell overstock and clearance inventory at discounted flash-sale prices, with in-store pickup and local delivery. Stores pay a monthly subscription and a percentage commission per sale; buyers pay the platform and stores are paid weekly after pickup or delivery is confirmed. Platform is ONLY the middleman — it does not sell stock itself or hold inventory in v1.
+Online marketplace in Sint Maarten connecting local stores to buyers to sell overstock and clearance inventory at discounted flash-sale prices, with in-store pickup and local delivery. Stores pay a monthly subscription and a percentage commission per sale; buyers pay the platform and stores are paid every 2 weeks (14 days), no earlier than 10 days after the sale, after pickup or delivery is confirmed. Platform is ONLY the middleman — it does not sell stock itself or hold inventory in v1.
 
 ## 2. Phase 0 gate — MUST pass before Lovable build
 - 3 founding clothing stores in writing (LOI + verification, see §6)
@@ -27,8 +27,8 @@ Online marketplace in Sint Maarten connecting local stores to buyers to sell ove
 - Mystery boxes (§9), Done-for-you vs self-serve (§10)
 - PWA push: opt-in only, 2 pushes/day max, at flash windows (alert ~11:45am and ~6:45pm), to opted-in followers of that store/category only. Never hourly.
 - Admin approval: first 3 listings per store manually approved. Admin can pause a store/flash.
-- Weekly payout statements (gross, Stripe fee, cut, refunds, net), separate ledger from Long Strokes.
-- Weekly reconciliation: Stripe vs ledger vs Wise, mismatch >$0.01 blocks that store's payout.
+- Fortnightly payout statements (gross, Stripe fee, cut, reserve held/released, refunds, net), separate ledger from Long Strokes.
+- Daily reconciliation: Stripe vs ledger vs Wise, mismatch >$0.01 blocks that store's payout.
 
 ## 4. Phase 1 scope — OUT (do NOT build)
 - Games on the front page. No Spin, Scratch, Hunt, check-in/coins live until SXM prize/lottery law sign-off. Keep code out, not hidden.
@@ -42,7 +42,7 @@ Online marketplace in Sint Maarten connecting local stores to buyers to sell ove
 - **New separate account: SXMDeals, acct_1UdadxLFhV5bSAOe, US, test/sandbox until activation submitted and approved.**
 - Public name: **721 Deals**, website: **721deals.com**, statement descriptor: **721DEALS**
 - Category: Other merchandise (Retail) — Stripe has no Marketplace category.
-- Payouts: **Weekly on Monday, USD**. Radar Lite (Included) on, 3D Secure on for high-risk, payouts manual/weekly not instant/daily.
+- Payouts: **Every 2 weeks (14 days), 10-day minimum, USD** (locked 2026-11-20; was weekly Monday). Radar Lite (Included) on, 3D Secure on for high-risk, payouts manual/fortnightly not instant/daily.
 - **Do NOT touch the other accounts:** SXM Turnovers acct_1UU31dE0EK4xv3Va, Long Strokes acct_1UNUpJHMK0V0giuH (public name Long Strokes Deep Cleaning — viewed only, never rename).
 - **Before checkout goes live:** CEO clicks "Agree and submit" on the Review page himself; connect bank/payout account when Stripe asks; confirm Radar/3DS; create subscription products below.
 - **Products to create after activation:** Starter $100/mo, Pro 3mo $195/mo ($585), Pro 6mo $175/mo ($1,050), Pro 12mo $150/mo ($1,800). Cut is NOT a Stripe product — deducted at payout.
@@ -63,7 +63,7 @@ Online marketplace in Sint Maarten connecting local stores to buyers to sell ove
 - Buyer never pays store directly. Buyer pays platform Stripe, money held at Stripe, released only after pickup/delivery confirmed + 48h dispute window.
 - **Hold: 48h after confirmed pickup. New stores (first 10 sales): 7-day hold + 10% rolling reserve 14 days, then graduate to 48h. Bank change: 3-day hold.**
 - Dispute: **48h report with photo, 72h decision. 2 disputes pause flash, 3 = removal.** Seller pays seller faults, platform pays transit faults.
-- Payouts weekly with statement. Separate ledger from Long Strokes. Chargeback budget 1–3% refunds.
+- Payouts every 2 weeks with statement (10-day minimum). Platform covers the $6 Wise transfer fee (one transfer per seller per payout run); $100 minimum payout balance, small balances roll to the next cycle (locked 2026-11-20). Separate ledger from Long Strokes. Chargeback budget 1–3% refunds.
 - Performance: warn at >2% defect in 60 days, suspend at 5%, pause flash if refunds >5% in 30 days. Do NOT copy Amazon 1% at SXM volume.
 - Terms: "not the seller / not a party" clause, seller indemnity, liability cap set by SXM lawyer, mediation first, short report window. No "insurance" / "escrow" wording without lawyer sign-off.
 
@@ -144,7 +144,7 @@ Online marketplace in Sint Maarten connecting local stores to buyers to sell ove
 - Wyoming: no state corporate/personal income tax; $60/year annual report.
 - US federal: single-member LLC disregarded, income flows to owner; non-resident owner pays no US federal income tax on profit from work done outside US with no US office/staff, **but must still file Form 5472 with pro forma Form 1120 every year, due April 15, $25,000 penalty for not filing.**
 - SXM: TOT **5%** on goods/services sold in SXM, filed monthly, due by 15th of following month, applies on turnover even at a loss; profit tax **34.5%** on net taxable / SXM-source profit; Chamber + Belastingdienst registration, TOT registration if turnover expected > ANG 30,000/year. Personal income tax for SXM resident progressive 12.5%–47.5%.
-- Disclosure: yes — Stripe, Wise, banks and SXM Tax Administration will ask where money comes from. Separate 721 Deals ledger, weekly payout statements, separation of subscription vs commission money.
+- Disclosure: yes — Stripe, Wise, banks and SXM Tax Administration will ask where money comes from. Separate 721 Deals ledger, fortnightly payout statements, separation of subscription vs commission money.
 - **Get a SXM accountant + US CPA for the 5472 filing before taking money in.**
 
 ## 18. Open decisions / gaps — do NOT invent answers in Lovable
@@ -165,7 +165,7 @@ Online marketplace in Sint Maarten connecting local stores to buyers to sell ove
 **Built already:** store dashboard + listing picker (§11), buyer browse + flash timer + WhatsApp reserve (step 1, 2026-11-19, plus fixes: Caribbean Punch, banner logo, 6-language gate, footer emails, slim header with single timer — user confirmed 2026-11-20).
 **Next, in this order:**
 1. **Admin dashboard (backend, owner-only)** — approvals queue (first 3 listings per store: price + photo check), store directory manager (update/remove photos, emails, listings), done-for-you workflow queue, holds + payouts view, disputes queue, reconciliation view. Admin can pause a store/flash.
-2. Stripe Checkout + held-funds state machine + weekly payout
+2. Stripe Checkout + held-funds state machine + fortnightly payout
 3. QR + last-4 pickup, server-signed, single-use (§8)
 4. PWA push opt-in + 2/day flash alerts + delivery zones + rider PIN flow (§9)
 5. Store directory extras: "items sold since joining" count next to each store name; slim store banner carousel under the flash band (founding stores first, swipeable on phones); sponsored placement slots for stores + house promos in open spaces — NO third-party display ads.
